@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
 				},
 				pages: [
 					{
-						path: VITE_BASE ?? '/',
+						path: '/',
 						prerender: {
 							enabled: true,
 							crawlLinks: true,
