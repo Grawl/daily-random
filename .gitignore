@@ -1,0 +1,6 @@
+.nitro
+.output
+.tanstack
+node_modules
+.env
+tsconfig.tsbuildinfo

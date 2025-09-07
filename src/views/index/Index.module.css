@@ -1,0 +1,42 @@
+.root {
+	flex-grow: 1;
+	width: 14em;
+	max-width: 100%;
+	height: 100%;
+}
+
+.date {
+	flex-grow: 1;
+}
+
+.title {
+	line-height: 1.1;
+	text-align: center;
+}
+
+.checkbox,
+.checkboxLabelWrapper {
+	flex-grow: 1;
+}
+
+.checkbox {
+	--mantine-cursor-type: pointer;
+
+	cursor: var(--mantine-cursor-type);
+
+	&:hover {
+		background-image: linear-gradient(
+			to right,
+			transparent,
+			var(--mantine-color-dark-light-hover)
+		);
+	}
+}
+
+.checkboxBody {
+	align-items: center;
+}
+
+.checkboxLabel {
+	padding-block: calc(var(--mantine-spacing-md) / 2);
+}
