@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ 'main' ]
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: build
+        run: |
+          npm run build
+        env:
+          VITE_SERVER_PORT: ${{ vars.VITE_SERVER_PORT }}
+          VITE_SERVER_HOST: ${{ vars.VITE_SERVER_HOST }}
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.output/public/'
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
