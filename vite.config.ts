@@ -38,7 +38,6 @@ export default defineConfig(({ mode }) => {
 			}),
 			tanstackStart({
 				customViteReactPlugin: true,
-				target: 'github-pages',
 				sitemap: {
 					host: VITE_SERVER_HOST,
 				},
